@@ -7,7 +7,7 @@
 </head>
 <body>
 
-Date and time: ${date_time}
+Date and time: ${dateTime}
 
 </body>
 </html>

@@ -25,10 +25,10 @@ public class Index {
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        String date_time = dtf.format(now);
+        String dateTime = dtf.format(now);
 
         Map<String, Object> params = new HashMap<>();
-        params.put("date_time", date_time);
+        params.put("dateTime", dateTime);
 
         return new ModelAndView("showMessage", params);
     }
