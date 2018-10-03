@@ -1,5 +1,11 @@
 FROM openjdk:10-jre-slim
-COPY ./target/shopie-0.0.1-SNAPSHOT.jar /usr/src/shopie/
-WORKDIR /usr/src/shopie
+
+ADD target/shopie-0.0.1-SNAPSHOT.jar shopie.jar
+
+RUN bash -c 'touch /shopie.jar'
+
 EXPOSE 8080
-CMD ["java", "-jar", "shopie-0.0.1-SNAPSHOT.jar"]
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=dev","-jar","/shopie.jar"]
+
+
