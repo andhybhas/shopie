@@ -1,0 +1,27 @@
+version: '2'
+services:
+  spring-boot:
+    image: spring-boot:latest
+    container_name: spring-boot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 8080
+    networks:
+      - spring-cloud-network
+    depends_on:
+      - database
+
+  database:
+    image: db-shopie
+    container_name: db-shopie
+    build:
+      context: .
+      dockerfile: db/Dockerfile
+    expose:
+      - 5432
+
+networks:
+  spring-cloud-network:
+    driver: bridge
