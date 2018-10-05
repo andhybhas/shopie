@@ -14,8 +14,8 @@ services:
       - database
 
   database:
-    image: db-shopie
-    container_name: db-shopie
+    image: postgresql
+    container_name: postgresql
     build:
       context: .
       dockerfile: db/Dockerfile
