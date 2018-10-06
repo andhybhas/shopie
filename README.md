@@ -37,13 +37,9 @@ just it, and will deploy. check http://localhost:8080
 This project was integrated with ci/cd CircleCI and Heroku, so we can access https://shopie.herokuapp.com, 
 This project use swagger for documentation api. 
 
-heroku:
+* [heroku](https://shopie.herokuapp.com/swagger-ui.html#!/)
 
-https://shopie.herokuapp.com/swagger-ui.html#!/
-
-localhost: 
-
-http://localhost:8080/swagger-ui.html#!/
+* [localhost](http://localhost:8080/swagger-ui.html#!/)
 
 
 ### Author
