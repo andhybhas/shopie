@@ -18,7 +18,6 @@ public class TaxServices {
     public ResponseTax doGetTaxFromUser(TaxForm form) {
         BigDecimal amount = BigDecimal.valueOf(form.getPrice());
         Refundable tax = getTax(amount, form.getTaxCode());
-
         ResponseTax responseTax = new ResponseTax();
         responseTax.setName(form.getName());
         responseTax.setPrice(form.getPrice().toString());
