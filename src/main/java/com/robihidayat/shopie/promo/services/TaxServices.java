@@ -24,6 +24,8 @@ public class TaxServices {
         responseTax.setPrice(form.getPrice().toString());
         responseTax.setAmount(amount.toString());
         responseTax.setTax(tax.getTax().toString());
+        responseTax.setRefundable(tax.getRefundable());
+        responseTax.setType(TaxCodeEnum.findByCode(form.getTaxCode()).type());
         responseTax.setTaxCode(TaxCodeEnum.findByCode(form.getTaxCode()).value());
         return responseTax;
     }

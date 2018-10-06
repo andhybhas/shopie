@@ -19,6 +19,12 @@ Status build:
 
 ### Documentation Api
 
+for heroku :
 
+https://shopie.herokuapp.com/swagger-ui.html#!/
+
+for localhost: 
+
+http://localhost:8080/swagger-ui.html#!/
 
   

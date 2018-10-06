@@ -2,14 +2,16 @@ package com.robihidayat.shopie.promo.enums;
 
 public enum TaxCodeEnum {
 
-    FOOD("1"),
-    TOBACO("2"),
-    ENTERTAIMENT("3");
+    FOOD("1","FOOD"),
+    TOBACO("2", "TOBACO"),
+    ENTERTAIMENT("3", "ENTERTAIMENT");
 
     private String value;
+    private String type;
 
-    TaxCodeEnum(String code) {
+    TaxCodeEnum(String code, String type) {
         this.value = code;
+        this.type = type;
     }
 
     public String value() {
@@ -23,5 +25,9 @@ public enum TaxCodeEnum {
             }
         }
         return null;
+    }
+
+    public String type(){
+        return type;
     }
 }
