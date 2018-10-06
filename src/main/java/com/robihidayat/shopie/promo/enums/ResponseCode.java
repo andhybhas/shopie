@@ -2,6 +2,7 @@ package com.robihidayat.shopie.promo.enums;
 
 public enum ResponseCode {
 
+    SUCCESS("0000"),
     INSUFFICIENT_PARAMS("0001"),
     INVALID_WORDS("0002"),
     ;

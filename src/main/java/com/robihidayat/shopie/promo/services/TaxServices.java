@@ -1,5 +1,7 @@
 package com.robihidayat.shopie.promo.services;
 
+import com.robihidayat.shopie.promo.enums.BaseResponse;
+import com.robihidayat.shopie.promo.enums.ResponseCode;
 import com.robihidayat.shopie.promo.enums.TaxCodeEnum;
 import com.robihidayat.shopie.promo.model.Refundable;
 import com.robihidayat.shopie.promo.model.ResponseTax;
@@ -26,6 +28,8 @@ public class TaxServices {
         responseTax.setRefundable(tax.getRefundable());
         responseTax.setType(TaxCodeEnum.findByCode(form.getTaxCode()).type());
         responseTax.setTaxCode(TaxCodeEnum.findByCode(form.getTaxCode()).value());
+        responseTax.setResponseCode(ResponseCode.SUCCESS.value());
+        responseTax.setResponseMessage("SUCCESS");
         return responseTax;
     }
 
