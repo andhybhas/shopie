@@ -1,6 +1,5 @@
 package com.robihidayat.shopie.promo.model;
 
-import com.robihidayat.shopie.promo.enums.BaseResponse;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,6 @@
 package com.robihidayat.shopie.promo.api;
 
-import com.robihidayat.shopie.promo.enums.BaseResponse;
+import com.robihidayat.shopie.promo.model.BaseResponse;
 import com.robihidayat.shopie.promo.exception.ValidationApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,6 @@ public class ApiExceptionHandler {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponseCode(ex.getResponseCode().value());
         baseResponse.setResponseMessage(ex.getMessage());
-        log.warn("Response : \n {}", baseResponse.toString());
         return ResponseEntity.status(HttpStatus.OK).body(baseResponse);
     }
 }

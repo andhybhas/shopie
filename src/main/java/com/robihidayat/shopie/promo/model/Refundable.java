@@ -9,6 +9,6 @@ import java.math.BigDecimal;
 @Getter
 public class Refundable {
     private BigDecimal tax;
-    private String refundable;
+    private String refund;
 
 }

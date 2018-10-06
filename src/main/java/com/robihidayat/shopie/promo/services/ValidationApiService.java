@@ -21,7 +21,7 @@ public class ValidationApiService {
     private String shareKey;
 
 
-    private void defaultValidation(BindingResult bindingResult) throws ValidationApiException {
+    private void defaultValidation(BindingResult bindingResult) {
         log.debug("Default validation ...");
         if (bindingResult.hasErrors()) {
             log.error("Error Default Validation");
@@ -29,7 +29,7 @@ public class ValidationApiService {
         }
     }
 
-    public void taskValidation(TaxForm form, BindingResult bindingResult) throws ValidationApiException {
+    public void taskValidation(TaxForm form, BindingResult bindingResult) {
         log.debug(" :: DO VALIDATION TAX ::");
         defaultValidation(bindingResult);
         StringBuilder element = new StringBuilder(shareKey);
@@ -40,7 +40,7 @@ public class ValidationApiService {
     }
 
 
-    private void validateWordsSHA1(String element, String clientWords) throws ValidationApiException {
+    private void validateWordsSHA1(String element, String clientWords)  {
         log.debug("Validate words SHA1 ...");
         String words = commonUtils.sha1(element);
         if (!words.equalsIgnoreCase(clientWords)) {

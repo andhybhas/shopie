@@ -26,14 +26,16 @@ public class TaxServices {
 
     @Transactional(rollbackOn = ValidationApiException.class)
     public ResponseTax doGetTaxFromUser(TaxForm form)  {
+
         BigDecimal amount = BigDecimal.valueOf(form.getPrice());
         Refundable tax = getTax(amount, form.getTaxCode());
+
         ResponseTax responseTax = new ResponseTax();
         responseTax.setName(form.getName());
         responseTax.setPrice(form.getPrice().toString());
         responseTax.setAmount(amount.toString());
         responseTax.setTax(tax.getTax().toString());
-        responseTax.setRefundable(tax.getRefundable());
+        responseTax.setRefundable(tax.getRefund());
         responseTax.setType(TaxCodeEnum.findByCode(form.getTaxCode()).type());
         responseTax.setTaxCode(TaxCodeEnum.findByCode(form.getTaxCode()).value());
         responseTax.setResponseCode(ResponseCode.SUCCESS.value());
@@ -62,7 +64,7 @@ public class TaxServices {
 
                 break;
         }
-        refundable.setRefundable(refund);
+        refundable.setRefund(refund);
         refundable.setTax(percentage);
         return refundable;
     }

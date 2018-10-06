@@ -1,4 +1,4 @@
-package com.robihidayat.shopie.promo.enums;
+package com.robihidayat.shopie.promo.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -15,7 +15,7 @@ public class CommonUtils {
     public String getSingleErrorMessage(List<FieldError> errorFields) {
         if (errorFields != null && !errorFields.isEmpty()) {
             for (FieldError fieldError : errorFields) {
-                return fieldError.getDefaultMessage();
+                fieldError.getDefaultMessage();
             }
         }
         return null;
