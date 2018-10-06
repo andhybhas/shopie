@@ -1,14 +1,18 @@
 package com.robihidayat.shopie.promo.services;
 
-import com.robihidayat.shopie.promo.enums.BaseResponse;
+import com.robihidayat.shopie.promo.entity.Tax;
 import com.robihidayat.shopie.promo.enums.ResponseCode;
 import com.robihidayat.shopie.promo.enums.TaxCodeEnum;
+import com.robihidayat.shopie.promo.exception.ValidationApiException;
 import com.robihidayat.shopie.promo.model.Refundable;
 import com.robihidayat.shopie.promo.model.ResponseTax;
 import com.robihidayat.shopie.promo.model.TaxForm;
+import com.robihidayat.shopie.promo.repository.TaxRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 
@@ -16,8 +20,12 @@ import java.math.BigDecimal;
 @Slf4j
 public class TaxServices {
 
+    @Autowired
+    private TaxRepository taxRepository;
 
-    public ResponseTax doGetTaxFromUser(TaxForm form) {
+
+    @Transactional(rollbackOn = ValidationApiException.class)
+    public ResponseTax doGetTaxFromUser(TaxForm form)  {
         BigDecimal amount = BigDecimal.valueOf(form.getPrice());
         Refundable tax = getTax(amount, form.getTaxCode());
         ResponseTax responseTax = new ResponseTax();
@@ -30,6 +38,7 @@ public class TaxServices {
         responseTax.setTaxCode(TaxCodeEnum.findByCode(form.getTaxCode()).value());
         responseTax.setResponseCode(ResponseCode.SUCCESS.value());
         responseTax.setResponseMessage("SUCCESS");
+        saveToEntity(form.getName(), BigDecimal.valueOf(form.getPrice()), TaxCodeEnum.findByCode(form.getTaxCode()).value() );
         return responseTax;
     }
 
@@ -77,6 +86,15 @@ public class TaxServices {
             return tax;
         }
         return amount.subtract(BigDecimal.valueOf(100)).multiply(BigDecimal.valueOf(0.01));
+    }
+
+    @Transactional(rollbackOn = ValidationApiException.class)
+    public void saveToEntity(String name, BigDecimal price, String taxCode){
+        Tax tax = new Tax();
+        tax.setName(name);
+        tax.setPrice(price);
+        tax.setTaxCode(taxCode);
+        taxRepository.save(tax);
     }
 }
 

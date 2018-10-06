@@ -1,0 +1,1 @@
+-- Table adminCREATE SEQUENCE tax_id_seq  INCREMENT 1  MINVALUE 1  MAXVALUE 9223372036854775807  START 1  CACHE 1;CREATE TABLE tax(  id bigint NOT NULL DEFAULT nextval('tax_id_seq'),  name character varying(128) NOT NULL,  tax_code character varying(10) NOT NULL,  price decimal NOT NULL,  CONSTRAINT admin_id_pk PRIMARY KEY (id));
